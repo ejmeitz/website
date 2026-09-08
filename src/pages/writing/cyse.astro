@@ -1,0 +1,25 @@
+---
+import Base from '../../layouts/Base.astro';
+import Asset from '../../components/Asset.astro';
+import { url } from '../../lib/urls';
+---
+<Base title="CYSE Honorable Mention" description="2026 Communicate Your Science & Engineering contest Honorable Mention.">
+  <article class="wrap section">
+    <a class="text-link" href={url('writing/')}>← Writing & talks</a>
+    <header class="page-heading">
+      <p class="eyebrow accent">DOE CSGF · 2026 Honorable Mention</p>
+      <h1>Communicate Your Science & Engineering</h1>
+      <p class="lead">My science communication essay received an Honorable Mention in the 2026 CYSE contest.</p>
+    </header>
+    <figure class="cyse-photo">
+      <Asset name="cyse-award.jpeg" alt="Ethan with his advisor, holding his 2026 CYSE Honorable Mention certificate at a DOE CSGF event" eager />
+      <figcaption>With my advisor at the 2026 DOE CSGF event.</figcaption>
+    </figure>
+    <div class="prose narrow section">
+      <h2>About the essay</h2>
+      <p>The essay introduces my work on atomic vibrations and materials modeling: taking decades-old theory and implementing it with modern computing to understand the thermodynamics of solids.</p>
+      <p>The essay is forthcoming through CSGF. I’ll add a link when it is published.</p>
+      <a class="text-link" href={url('research/')}>Related research ↗</a>
+    </div>
+  </article>
+</Base>

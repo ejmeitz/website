@@ -3,7 +3,7 @@
 ## Review before the domain move
 
 1. Push the reviewed source and lockfile to `main` in `ejmeitz/website`.
-2. In repository Settings → Pages, select GitHub Actions as the source. GitHub Free requires a public repository; keeping the source private requires a supporting paid plan. Set the Actions repository variable `PAGES_ENABLED` to `true` once Pages is enabled. Until then the workflow validates the site without attempting deployment.
+2. In repository Settings → Pages, select GitHub Actions as the source. GitHub Free requires a public repository; keeping the source private requires a supporting paid plan. Pushes to `main` validate and deploy; pull requests validate only.
 3. Confirm GitHub Actions artifact storage has available capacity, then run the **Validate and deploy website** workflow. Check that build, artifact upload, and deployment succeed. If the account quota is full, review retained artifacts and billing/storage options; do not delete unrelated artifacts automatically.
 4. Review `https://ejmeitz.github.io/website/` on desktop and a phone. Follow research links, load a game, play a video, and verify old links such as `/website/research/phd/`.
 5. Configure Formspree using the README and verify a real message arrives. Before that, the contact page deliberately uses a LinkedIn fallback.

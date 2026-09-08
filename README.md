@@ -39,7 +39,7 @@ Without a valid ID, the page explicitly says the form is unavailable, disables s
 
 See [the launch guide](docs/launch.md). The workflow deploys pushes to `main`, validates pull requests without deploying them, and supports manual dispatch.
 
-Default build target: `https://ejmeitz.github.io/website/`. The GitHub repository must have **Settings → Pages → Source → GitHub Actions** enabled, and the Actions repository variable `PAGES_ENABLED` set to `true`. Until then, pushes validate without uploading artifacts or deploying. GitHub Free requires a public repository for Pages; a private repository requires a supporting paid plan. Deployment also requires available GitHub Actions artifact storage. Deployment does not automatically change DNS or shut down Heroku.
+Default build target: `https://ejmeitz.github.io/website/`. The GitHub repository must have **Settings → Pages → Source → GitHub Actions** enabled. Pushes to `main` validate and deploy automatically; pull requests run validation only. GitHub Free requires a public repository for Pages; a private repository requires a supporting paid plan. Deployment also requires available GitHub Actions artifact storage. Deployment does not automatically change DNS or shut down Heroku.
 
 For the later custom domain, set repository variables `SITE_URL=https://ethanmeitz.com` and `BASE_PATH=/` together. Local builds use shell environment variables for these settings; `.env` is used for the Formspree ID. Do not add a custom domain while still reviewing the project URL.
 

@@ -1,0 +1,7 @@
+---
+import { redirects } from '../data/redirects.mjs';
+import { url } from '../lib/urls';
+export function getStaticPaths(){return Object.entries(redirects).map(([legacy,target])=>({params:{legacy},props:{target}}));}
+const target=url(Astro.props.target);
+---
+<!doctype html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta http-equiv="refresh" content={`0;url=${target}`} /><meta name="robots" content="noindex, follow" /><link rel="canonical" href={new URL(target,Astro.site)} /><title>Page moved · Ethan Meitz</title></head><body><main><h1>Page moved</h1><p><a href={target}>Continue to the project →</a></p></main></body></html>

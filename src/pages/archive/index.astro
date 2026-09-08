@@ -1,0 +1,7 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { url } from '../../lib/urls';
+const projects = await getCollection('archive');
+---
+<Base title="Project archive"><div class="wrap"><header class="page-heading"><p class="eyebrow accent">Earlier work</p><h1>Project archive</h1><p class="lead">Earlier projects in scientific imaging, mechanical design, and numerical modeling.</p></header><div class="archive-list">{projects.map(p=><article><h2><a href={url(`archive/${p.id}/`)}>{p.data.title} ↗</a></h2><p>{p.data.description}</p><div class="tags">{p.data.tags.map(t=><span>{t}</span>)}</div></article>)}</div></div></Base>

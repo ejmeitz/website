@@ -1,0 +1,5 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/urls';
+---
+<Base title="Page not found" noindex><div class="wrap"><header class="page-heading"><p class="eyebrow accent">404</p><h1>Page not found</h1><p class="lead">The link may belong to an older version of the site. You can find current research and earlier projects below.</p><div class="actions"><a class="button" href={url()}>Back home ↗</a><a href={url('research/')}>Research</a><a href={url('archive/')}>Project archive</a></div></header></div></Base>

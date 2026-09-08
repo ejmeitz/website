@@ -1,0 +1,10 @@
+---
+import Base from '../layouts/Base.astro';
+import Asset from '../components/Asset.astro';
+import type { ImageMetadata } from 'astro';
+const images = import.meta.glob<{default: ImageMetadata}>('../assets/*', {eager:true});
+const pieces = [
+  ['elephant.png','Elephant','Watercolor'],['dog.png','Dog','Watercolor'],['Jaguar.png','Jaguar','Colored pencil'],['beluga.png','Beluga','Drawing'],['cathedral.png','Cathedral','Sketch'],['fish.png','Betta fish','Watercolor'],['elephant_grey.png','Elephant study','Drawing'],['walrus.png','Walrus','Drawing'],
+];
+---
+<Base title="Art"><div class="wrap"><header class="page-heading"><p class="eyebrow accent">Drawing & painting</p><h1>Artwork</h1><p class="lead">A selection of my watercolor paintings, pencil drawings, and sketches.</p></header><div class="gallery">{pieces.map(([file,title,medium])=><figure><a href={images[`../assets/${file}`].default.src} aria-label={`Open full-size ${title.toLowerCase()} ${medium.toLowerCase()}`}><Asset name={file} alt={`${medium} of ${title.toLowerCase()} by Ethan Meitz`} /></a><figcaption>{title}<span>{medium}</span></figcaption></figure>)}</div></div></Base>

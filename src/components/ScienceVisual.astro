@@ -1,0 +1,20 @@
+---
+interface Props { kind?: string }
+const { kind = 'solids' } = Astro.props;
+const dots = Array.from({ length: 63 }, (_, i) => ({ x: 35 + (i % 9) * 37, y: 33 + Math.floor(i / 9) * 31, i }));
+---
+<div class:list={['science-visual', kind]} aria-hidden="true">
+  {kind === 'solids' ? <svg viewBox="0 0 370 255" fill="none">
+    {dots.map(({x, y, i}) => <g>
+      {i % 9 < 8 && <path d={`M${x} ${y}h37`} stroke="currentColor" opacity=".2" />}
+      {i < 54 && <path d={`M${x} ${y}v31`} stroke="currentColor" opacity=".2" />}
+      <circle cx={x} cy={y + Math.sin((i % 9) * .8) * 8} r={4.5 + Math.sin(i * .6)} fill="currentColor" opacity={.4 + (i % 4) * .17} />
+    </g>)}
+    <path d="M20 125 Q65 40 110 125 T200 125 T290 125 T380 125" stroke="currentColor" stroke-width="2" opacity=".65" />
+  </svg> : kind === 'compute' ? <div class="compute-art"><span>Julia</span><div class="compute-line"></div><div class="compute-nodes">{Array.from({length: 12}, (_,i) => <span class="compute-node">{String(i + 1).padStart(2,'0')}</span>)}</div><small>ONE EXPRESSION. MANY GPUS.</small></div> : <svg viewBox="0 0 370 255" fill="none">
+    <path d="M40 60 C180 0 45 180 170 160 S270 235 320 175" stroke="currentColor" stroke-width="3" />
+    <path d="M45 210 C145 240 95 85 240 100 S270 25 330 40" stroke="currentColor" stroke-width="3" opacity=".45" />
+    {[0,1,2,3,4].map(i=><path d={`M${135+i*24} ${140-i*6}L${147+i*24} ${106+i*3}`} stroke="currentColor" stroke-dasharray="3 5" opacity=".5" />)}
+    <circle cx="170" cy="160" r="5" fill="currentColor" /><circle cx="240" cy="100" r="5" fill="currentColor" />
+  </svg>}
+</div>

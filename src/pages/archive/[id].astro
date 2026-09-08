@@ -1,0 +1,15 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Asset from '../../components/Asset.astro';
+import { url } from '../../lib/urls';
+export async function getStaticPaths(){return (await getCollection('archive')).map(project=>({params:{id:project.id},props:{project}}));}
+const { project }=Astro.props;
+const { Content } = await render(project);
+---
+<Base title={project.data.title} description={project.data.description}><div class="wrap"><header class="page-heading"><a href={url('archive/')} class="eyebrow accent">← Project archive</a><h1>{project.data.title}</h1><p class="lead">{project.data.description}</p></header><div class="article-layout"><aside class="article-sidebar"><p class="eyebrow">Earlier work</p><div class="tags">{project.data.tags.map(t=><span>{t}</span>)}</div><a href={url('research/')}>Current research ↗</a></aside><article class="prose">{project.data.image && <figure class="figure" style="margin-top:0"><Asset name={project.data.image} alt={project.data.alt ?? project.data.title} eager /></figure>}<Content />
+  {project.id === 'senior-design' && <figure class="figure"><Asset name="explodedView.PNG" alt="Exploded CAD view of the camera system’s z-axis assembly" /><figcaption>The z-axis assembly.</figcaption></figure>}
+  {project.id === 'hotdog' && <div id="data">{[['NumericalSoln.PNG','Temperature evolution from the radial finite-difference model'],['ExpVsTheory.PNG','Experimental temperature measurements compared with model predictions'],['LC.PNG','The initial lumped-capacitance calculation']].map(([name,alt])=><figure class="figure"><Asset name={name} alt={alt} /><figcaption>{alt}.</figcaption></figure>)}</div>}
+  {project.id === 'strain' && <div id="examples"><h2>Deformation examples</h2><figure class="figure"><video controls preload="none" aria-label="Silent visualization of tissue deformation" src={url('media/exampleDeformation.mp4')}></video><figcaption>Silent animation showing the estimated deformation and strain map.</figcaption></figure><figure class="figure"><video controls preload="none" aria-label="Silent visualization of pin tracking" src={url('media/circleTracking.mp4')}></video><figcaption>Silent animation showing the tracked pin locations.</figcaption></figure></div>}
+  {project.id === 'ovito-proj' && <details><summary>Show the original vibrational-mode animation</summary><img src={url('media/aSi_mode_animation_big.gif')} alt="Periodic vibrational motion of atoms in amorphous silicon" loading="lazy" /></details>}
+</article></div></div></Base>

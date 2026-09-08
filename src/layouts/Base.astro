@@ -1,0 +1,44 @@
+---
+import '@fontsource-variable/dm-sans';
+import '@fontsource-variable/newsreader';
+import '../styles/global.css';
+import { url, socials } from '../lib/urls';
+interface Props { title: string; description?: string; noindex?: boolean; theme?: string }
+const { title, description = 'Ethan Meitz is a computational scientist and DOE CSGF fellow working across solid-state physics, high-performance computing, and machine learning for biology.', noindex = false, theme = '' } = Astro.props;
+const canonical = new URL(noindex ? url('404.html') : Astro.url.pathname, Astro.site);
+const nav = [['Research', 'research/'], ['Writing & talks', 'writing/'], ['About', 'about/'], ['Art', 'art/'], ['Playground', 'fun/']];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f8f6f0" />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
+    <meta property="og:title" content={`${title} · Ethan Meitz`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <title>{title === 'Home' ? 'Ethan Meitz · Computational scientist' : `${title} · Ethan Meitz`}</title>
+  </head>
+  <body class={theme}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="wordmark" href={url()} aria-label="Ethan Meitz home">ethan meitz<span aria-hidden="true">.</span></a>
+      <nav aria-label="Main navigation">
+        {nav.map(([label, path]) => <a href={url(path)} aria-current={Astro.url.pathname.startsWith(url(path)) ? 'page' : undefined}>{label}</a>)}
+        <a class="nav-contact" href={url('contact/')} aria-current={Astro.url.pathname.startsWith(url('contact/')) ? 'page' : undefined}>Let’s talk <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer wrap">
+      <div><a class="wordmark" href={url()}>ethan meitz<span aria-hidden="true">.</span></a><p>Computational scientist · Carnegie Mellon University</p></div>
+      <div class="footer-links"><a href={socials.github}>GitHub ↗</a><a href={socials.linkedin}>LinkedIn ↗</a><a href={url('contact/')}>Contact</a><a href={url('archive/')}>Project archive</a><a href={url('privacy/')}>Privacy</a></div>
+      <p class="copyright">© {new Date().getFullYear()} Ethan Meitz</p>
+    </footer>
+  </body>
+</html>

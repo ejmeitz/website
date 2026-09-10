@@ -56,3 +56,5 @@ Keep the thermodynamics timing claim attached to quantum LJ neon and its **estim
 ## Asset provenance
 
 Artwork, photographs, historical plots, and videos were supplied in the owner’s original website repository. `thermodynamics-figure.png` reproduces Figure 1 and its caption from the supplied 2026 preprint *Quantum Anharmonic Phonon Thermodynamics from the Free Energy Cumulant Expansion*, DOI `10.21203/rs.3.rs-10541555/v1`, licensed CC BY 4.0. It is cropped from the PDF page with no change to the data. Research-card diagrams are schematic, not simulation output. Fonts are bundled via Fontsource with their package licenses. p5.js sketches remain externally hosted and load only on request.
+
+The “Good vibrations” cover illustration is by Ethan Meitz, sourced from the [published DEIXIS essay](https://deixismagazine.org/2026/09/good-vibrations/) (September 2026).

@@ -23,9 +23,11 @@
 .personal-images{display:grid;gap:24px;grid-template-columns:1.4fr 1fr;align-items:center}
 .personal-images figure{margin:0;min-width:0}
 .personal-images img{aspect-ratio:auto;object-fit:contain}
-.personal-images figcaption,.cyse-photo figcaption{font-size:.8rem;color:var(--muted);margin-top:12px}
+.personal-images figcaption{font-size:.8rem;color:var(--muted);margin-top:12px}
 .personal-art{background:#eee9dd;padding:16px}
 .about-photo img{width:100%;max-height:520px;object-fit:cover;object-position:center 55%}
-.cyse-photo{margin:0;max-width:900px}
-.cyse-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 10%}
-@media(max-width:760px){.hero-portrait{max-width:440px;width:100%;justify-self:center}.personal-images{grid-template-columns:1.4fr 1fr}.cyse-photo img{aspect-ratio:1;object-position:center 10%}}
+@media(max-width:760px){.hero-portrait{max-width:440px;width:100%;justify-self:center}.personal-images{grid-template-columns:1.4fr 1fr}}
+
+.highlight-cover{display:block;margin-bottom:24px;overflow:hidden;border-radius:3px}
+.highlight-cover img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.essay-highlight .image-credit{font-size:.8rem;color:var(--muted);margin-top:14px}

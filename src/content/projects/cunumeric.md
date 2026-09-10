@@ -9,6 +9,8 @@ order: 2
 color: green
 tags: ["Distributed computing", "GPU kernels", "Julia"]
 links:
+  - label: "JuliaCon 2025 talk ↗"
+    href: "https://www.youtube.com/watch?v=rFJMqKIJuNc"
   - label: "Explore cuNumeric.jl ↗"
     href: "https://github.com/JuliaLegate/cuNumeric.jl"
   - label: "Read the documentation ↗"
@@ -46,4 +48,4 @@ We have benchmarked core operations against cuPyNumeric and worked on Gray–Sco
 
 ## Talks & podcast
 
-I presented **cuNumeric.jl: Automating Distributed Numerical Computing** with D. Krasowska at JuliaCon 2025. An upcoming CSGF podcast discusses this project, the NVIDIA collaboration, and the experience of working with an advisor who also held the fellowship.
+I helped organize JuliaCon 2025 in Pittsburgh, where David and I presented **cuNumeric.jl: Automating Distributed Numerical Computing**. [Watch our talk](#video). An upcoming CSGF podcast discusses this project, the NVIDIA collaboration, and the experience of working with an advisor who also held the fellowship.

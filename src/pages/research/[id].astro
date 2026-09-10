@@ -14,7 +14,7 @@ const { Content } = await render(project);
     <div class="article-layout"><aside class="article-sidebar" aria-label="Project resources"><div class="tags">{project.data.tags.map(tag=><span>{tag}</span>)}</div>{project.data.links.map(link=><a href={link.href}>{link.label}</a>)}<a href={url('contact/')}>Ask me about this work ↗</a></aside><article class="prose">
       {project.id === 'solids' && <figure class="figure"><Asset name="thermodynamics-figure.png" alt="Published preprint figure comparing classical argon and silicon thermodynamic predictions with reference results over temperature" /><figcaption>Classical benchmark results from “Quantum Anharmonic Phonon Thermodynamics from the Free Energy Cumulant Expansion.” Model potentials: Lennard–Jones argon and Stillinger–Weber silicon. <a href="https://doi.org/10.21203/rs.3.rs-10541555/v1">Preprint, CC BY 4.0 ↗</a></figcaption></figure>}
       <Content />
-      {project.id === 'cunumeric' && <section id="video"><h2>cuNumeric.jl video</h2><CuNumericVideo /></section>}
+      {project.id === 'cunumeric' && <section id="video"><h2>JuliaCon 2025</h2><p>I helped organize JuliaCon 2025 in Pittsburgh. This is my talk with David, “cuNumeric.jl: Automating Distributed Numerical Computing.”</p><CuNumericVideo /></section>}
       {project.id === 'cunumeric' && <section class="placeholder"><p class="eyebrow">Benchmarks · Coming soon</p><h3>Gray–Scott reaction–diffusion</h3><p>Space reserved for scaling and runtime plots, with hardware, problem sizes, and comparison methods. Benchmark figures will be added when ready.</p></section>}
     </article></div>
   </div>

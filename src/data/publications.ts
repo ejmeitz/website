@@ -5,7 +5,7 @@ export const publications = [
 ];
 export const talks = [
   { title: 'Stochastic Sampling for Quantum-Anharmonic Property Prediction in Solids', venue: 'APS March Meeting', year: '2026', authors: 'E. Meitz, A. Castellano, A. McGaughey, and G. Wang' },
-  { title: 'cuNumeric.jl: Automating Distributed Numerical Computing', venue: 'JuliaCon', year: '2025', authors: 'E. Meitz and D. Krasowska' },
+  { title: 'cuNumeric.jl: Automating Distributed Numerical Computing', venue: 'JuliaCon · Pittsburgh', year: '2025', authors: 'E. Meitz and D. Krasowska' },
   { title: 'Mode-Resolved High-Temperature Vibrational Heat Capacity', venue: 'APS March Meeting', year: '2024', authors: 'E. Meitz, A. McGaughey, and G. Wang' },
   { title: 'Liquid Heat Capacity from Instantaneous Normal Modes', venue: 'Materials Research Society Spring Meeting', year: '2023', authors: 'E. Meitz, A. McGaughey, and G. Wang' },
 ];

@@ -48,4 +48,4 @@ We have benchmarked core operations against cuPyNumeric and worked on Gray–Sco
 
 ## Talks & podcast
 
-I helped organize JuliaCon 2025 in Pittsburgh, where David and I presented **cuNumeric.jl: Automating Distributed Numerical Computing**. [Watch our talk](#video). An upcoming CSGF podcast discusses this project, the NVIDIA collaboration, and the experience of working with an advisor who also held the fellowship.
+I served as a local liaison for JuliaCon 2025 in Pittsburgh, helping with setup and coordinating spaces and reservations with CMU and the University of Pittsburgh. David and I presented **cuNumeric.jl: Automating Distributed Numerical Computing**. [Watch our talk](#video). An upcoming CSGF podcast discusses this project, the NVIDIA collaboration, and the experience of working with an advisor who also held the fellowship.

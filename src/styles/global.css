@@ -31,3 +31,20 @@
 .highlight-cover{display:block;margin-bottom:24px;overflow:hidden;border-radius:3px}
 .highlight-cover img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
 .essay-highlight .image-credit{font-size:.8rem;color:var(--muted);margin-top:14px}
+
+.highlights>h2{margin-bottom:36px}
+.highlight-group+.highlight-group{margin-top:44px}
+.highlight-group .section-heading{align-items:baseline;margin-bottom:20px}
+.highlight-group .section-heading h3{font-family:var(--font-sans, sans-serif);font-size:1.1rem;margin:0}
+.highlights .project-grid,.highlight-cards{display:flex;flex-wrap:wrap;gap:24px}
+.highlights .project-card,.highlight-card{flex:1 1 280px;min-width:0}
+.highlight-card{border:1px solid var(--line);background:var(--paper);overflow:hidden}
+.highlight-card-body{padding:26px}
+.highlights h4{font-family:'Newsreader Variable',serif;font-size:1.65rem;font-weight:500;line-height:1.2;margin:14px 0}
+.highlight-card .highlight-cover{margin:0;border-radius:0}
+.highlight-card .highlight-cover img{aspect-ratio:16/9}
+.video-player{aspect-ratio:16/9;display:flex;flex-direction:column;justify-content:center;align-items:center;background:#e9ece5;padding:24px;text-align:center}
+.video-load{cursor:pointer;padding:14px 20px;background:var(--ink);color:white;border:0;border-radius:3px;font:inherit}
+.video-player:has(iframe){padding:0}
+.video-player iframe{display:block;width:100%;height:100%;border:0}
+@media(max-width:600px){.highlights .project-card,.highlight-card{flex-basis:100%}.video-player{aspect-ratio:auto;min-height:210px}.video-player:has(iframe){aspect-ratio:16/9;min-height:0}}

@@ -48,3 +48,20 @@
 .video-player:has(iframe){padding:0}
 .video-player iframe{display:block;width:100%;height:100%;border:0}
 @media(max-width:600px){.highlights .project-card,.highlight-card{flex-basis:100%}.video-player{aspect-ratio:auto;min-height:210px}.video-player:has(iframe){aspect-ratio:16/9;min-height:0}}
+
+.cunumeric-card-logo{height:255px;display:flex;align-items:center;justify-content:center;background:#eef1e6;padding:24px}.cunumeric-card-logo img{width:auto;height:100%;max-width:100%;object-fit:contain}.cunumeric-page-logo{width:180px;height:auto;margin:24px 0}
+
+.ppi-card-image{height:255px;padding:20px;background:white;display:flex;align-items:center;justify-content:center}.ppi-card-image img{width:100%;height:100%;object-fit:contain}.ppi-figure img{width:100%;max-width:640px;height:auto;margin-inline:auto}.project-card-body .image-credit{font-size:.75rem;margin:0 0 12px}
+
+/* A shared landscape frame keeps square logos from changing card proportions. */
+.project-card-media{min-width:0}
+.project-card .project-image{aspect-ratio:1.55;border:1px solid var(--line);border-radius:8px;background:var(--paper);box-shadow:0 3px 0 #deddd5,0 10px 20px rgb(37 44 40 / .06);transition:transform .2s,box-shadow .2s}
+.project-card .project-image>div{width:100%;height:100%;max-height:none;aspect-ratio:auto}
+.project-card .cunumeric-card-logo{background:var(--paper);padding:20px}
+.project-card .cunumeric-card-logo img{width:100%;height:100%;object-fit:contain}
+.project-card .ppi-card-image{background:var(--paper);padding:16px}
+.ppi-card-image img,.ppi-figure img{mix-blend-mode:multiply}
+.project-card-media .image-credit{font-size:.7rem!important;line-height:1.35!important;margin:6px 2px 0!important}
+.ppi-figure{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px;box-shadow:0 4px 0 #deddd5,0 12px 24px rgb(37 44 40 / .06)}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.project-card:hover .project-image{transform:perspective(900px) rotateX(2deg) translateY(-3px);box-shadow:0 5px 0 #deddd5,0 15px 25px rgb(37 44 40 / .1)}}
+@media(prefers-reduced-motion:reduce){.project-card .project-image{transition:none}}

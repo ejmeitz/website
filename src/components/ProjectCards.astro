@@ -1,12 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import { url } from '../lib/urls';
+import Asset from './Asset.astro';
 import ScienceVisual from './ScienceVisual.astro';
 interface Props { headingLevel?: 'h3' | 'h4' }
 const { headingLevel: Heading = 'h3' } = Astro.props;
 const projects = (await getCollection('projects')).sort((a,b)=>a.data.order-b.data.order);
 ---
 <div class="project-grid">{projects.map((project, i) => <article class={`project-card ${project.data.color}`}>
-  <a class="project-image" tabindex="-1" aria-hidden="true" href={url(`research/${project.id}/`)}><ScienceVisual kind={['solids','compute','proteins'][i]} /></a>
+  <div class="project-card-media"><a class="project-image" tabindex="-1" aria-hidden="true" href={url(`research/${project.id}/`)}>{project.id === 'cunumeric' ? <div class="cunumeric-card-logo"><Asset name="cunumeric-logo.png" alt="" /></div> : project.id === 'proteins' ? <div class="ppi-card-image"><Asset name="pinder-protein-complex.png" alt="" /></div> : <ScienceVisual kind={['solids','compute','proteins'][i]} />}</a>{project.id === 'proteins' && <p class="image-credit">Illustration: <a href="https://www.biorxiv.org/content/10.1101/2024.07.17.603980v4.full.pdf">PINDER paper ↗</a></p>}</div>
   <div class="project-card-body"><p class="eyebrow">0{i+1} / {project.data.category}</p><Heading><a href={url(`research/${project.id}/`)}>{project.data.shortTitle}<span aria-hidden="true"> ↗</span></a></Heading><p>{project.data.description}</p><div class="tags">{project.data.tags.slice(0,3).map(tag=><span>{tag}</span>)}</div></div>
 </article>)}</div>

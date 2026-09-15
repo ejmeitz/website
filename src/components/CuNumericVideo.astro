@@ -1,19 +1,10 @@
-<div class="video-player" data-cunumeric-video>
-  <button type="button" class="video-load">Load JuliaCon 2025 talk</button>
-  <p class="muted">Loads a YouTube player. Playback starts only when you press Play.</p>
+<div class="video-player">
+  <iframe
+    src="https://www.youtube-nocookie.com/embed/rFJMqKIJuNc?autoplay=0"
+    title="JuliaCon 2025: cuNumeric.jl — Ethan and David"
+    allow="encrypted-media; picture-in-picture; fullscreen"
+    allowfullscreen
+    referrerpolicy="strict-origin-when-cross-origin"
+  ></iframe>
 </div>
 <p><a href="https://www.youtube.com/watch?v=rFJMqKIJuNc">Watch on YouTube ↗</a></p>
-<script>
-  document.querySelectorAll<HTMLElement>('[data-cunumeric-video]').forEach(container => {
-    container.querySelector('button')?.addEventListener('click', () => {
-      const player = document.createElement('iframe');
-      player.src = 'https://www.youtube-nocookie.com/embed/rFJMqKIJuNc?autoplay=0';
-      player.title = 'JuliaCon 2025: cuNumeric.jl — Ethan and David';
-      player.allow = 'encrypted-media; picture-in-picture; fullscreen';
-      player.allowFullscreen = true;
-      player.referrerPolicy = 'strict-origin-when-cross-origin';
-      container.replaceChildren(player);
-      player.focus();
-    }, { once: true });
-  });
-</script>

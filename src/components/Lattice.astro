@@ -1,0 +1,41 @@
+<section class="play-card lattice" aria-labelledby="lattice-title">
+  <h2 id="lattice-title">Vibrating lattice</h2>
+  <canvas width="720" height="440" aria-label="Interactive spring lattice. Use the Pulse button to excite the lattice, or drag an atom with a mouse or touch." role="img"></canvas>
+  <div class="lattice-controls"><button data-pulse>Pulse</button><button data-pause>Pause</button><button data-reset>Reset</button><label>Damping <input data-damping type="range" min="0" max="2" step="0.05" value="0.25" /></label></div>
+  <small>Drag an atom and release, or press Pulse. Colors show displacement. A simplified spring model with fixed edges.</small>
+</section>
+<style>
+.lattice{grid-column:1/-1}.lattice canvas{width:100%;height:auto;max-height:540px;aspect-ratio:18/11;object-fit:contain;background:#edf1e8;border:1px solid var(--line);border-radius:8px;touch-action:none;margin-top:24px;cursor:grab}.lattice-controls{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:18px 0}.lattice-controls button{background:var(--green);color:white;border:0;border-radius:4px;padding:8px 18px}.lattice-controls label{display:flex;align-items:center;gap:12px}.lattice-controls input{width:120px}
+</style>
+<script>
+const root = document.querySelector<HTMLElement>('.lattice')!;
+const canvas = root.querySelector('canvas')!;
+const ctx = canvas.getContext('2d')!;
+const pause = root.querySelector<HTMLButtonElement>('[data-pause]')!;
+const damping = root.querySelector<HTMLInputElement>('[data-damping]')!;
+const cols=17, rows=11, spacing=36;
+const atoms=Array.from({length:cols*rows},(_,i)=>({x:72+(i%cols)*spacing,y:40+Math.floor(i/cols)*spacing,u:0,v:0,du:0,dv:0,fixed:i%cols===0||i%cols===cols-1||i<cols||i>=cols*(rows-1)}));
+const bonds: [number,number][]=[];
+atoms.forEach((_,i)=>{if(i%cols<cols-1)bonds.push([i,i+1]);if(i<cols*(rows-1))bonds.push([i,i+cols]);});
+let running=!matchMedia('(prefers-reduced-motion: reduce)').matches;
+let selected=-1, pointer:number|null=null, last=0, elapsed=0;
+const sync=()=>{pause.textContent=running?'Pause':'Resume';};sync();
+function pulse(){const a=atoms[Math.floor(atoms.length/2)];a.u=24;a.v=-20;a.du=0;a.dv=0;}
+if(running)pulse();
+function step(dt:number){
+ const fx=new Float64Array(atoms.length),fy=new Float64Array(atoms.length);
+ // Harmonic vector springs couple neighboring displacements in both directions.
+ for(const [i,j] of bonds){const x=65*(atoms[j].u-atoms[i].u),y=65*(atoms[j].v-atoms[i].v);fx[i]+=x;fx[j]-=x;fy[i]+=y;fy[j]-=y;}
+ atoms.forEach((a,i)=>{if(a.fixed||i===selected)return;a.du+=(fx[i]-Number(damping.value)*a.du)*dt;a.dv+=(fy[i]-Number(damping.value)*a.dv)*dt;a.u+=a.du*dt;a.v+=a.dv*dt;});
+}
+function draw(){ctx.clearRect(0,0,720,440);ctx.lineWidth=1.3;ctx.strokeStyle='#9daea4';for(const [i,j] of bonds){const a=atoms[i],b=atoms[j];ctx.beginPath();ctx.moveTo(a.x+a.u,a.y+a.v);ctx.lineTo(b.x+b.u,b.y+b.v);ctx.stroke();}atoms.forEach((a,i)=>{const t=Math.min(1,Math.hypot(a.u,a.v)/22);ctx.beginPath();ctx.arc(a.x+a.u,a.y+a.v,a.fixed?3:6,0,Math.PI*2);ctx.fillStyle=a.fixed?'#87998c':`rgb(${Math.round(38+156*t)},${Math.round(119-34*t)},${Math.round(110-43*t)})`;ctx.fill();if(i===selected){ctx.strokeStyle='#252c28';ctx.stroke();}});}
+function tick(time:number){if(running&&!document.hidden){elapsed+=Math.min((time-last)/1000,0.05);while(elapsed>=1/120){step(1/120);elapsed-=1/120;}}else elapsed=0;last=time;draw();requestAnimationFrame(tick);}requestAnimationFrame(tick);
+root.querySelector('[data-pulse]')!.addEventListener('click',()=>{pulse();running=true;sync();});
+pause.addEventListener('click',()=>{running=!running;sync();});
+root.querySelector('[data-reset]')!.addEventListener('click',()=>{atoms.forEach(a=>{a.u=a.v=a.du=a.dv=0;});});
+function position(e:PointerEvent){const r=canvas.getBoundingClientRect();const scale=Math.min(r.width/720,r.height/440);return {x:(e.clientX-r.left-(r.width-720*scale)/2)/scale,y:(e.clientY-r.top-(r.height-440*scale)/2)/scale};}
+canvas.addEventListener('pointerdown',e=>{if(pointer!==null)return;const p=position(e);let distance=25;atoms.forEach((a,i)=>{const d=Math.hypot(p.x-a.x-a.u,p.y-a.y-a.v);if(!a.fixed&&d<distance){selected=i;distance=d;}});if(selected>=0){pointer=e.pointerId;canvas.setPointerCapture(e.pointerId);}});
+canvas.addEventListener('pointermove',e=>{if(selected<0||e.pointerId!==pointer)return;const p=position(e),a=atoms[selected];a.u=Math.max(-50,Math.min(50,p.x-a.x));a.v=Math.max(-50,Math.min(50,p.y-a.y));a.du=a.dv=0;});
+function release(){selected=-1;pointer=null;}
+canvas.addEventListener('pointerup',release);canvas.addEventListener('pointercancel',release);canvas.addEventListener('lostpointercapture',release);
+</script>

@@ -6,7 +6,7 @@ import { url, socials } from '../lib/urls';
 interface Props { title: string; description?: string; noindex?: boolean; theme?: string }
 const { title, description = 'Ethan Meitz is a computational scientist and DOE CSGF fellow working across solid-state physics, high-performance computing, and machine learning for biology.', noindex = false, theme = '' } = Astro.props;
 const canonical = new URL(noindex ? url('404.html') : Astro.url.pathname, Astro.site);
-const nav = [['Research', 'research/'], ['Writing & talks', 'writing/'], ['About', 'about/'], ['Art', 'art/'], ['Playground', 'fun/']];
+const nav = [['About', 'about/'], ['Research', 'research/'], ['Writing', 'writing/'], ['Art', 'art/'], ['Playground', 'fun/']];
 ---
 <!doctype html>
 <html lang="en">
@@ -31,7 +31,7 @@ const nav = [['Research', 'research/'], ['Writing & talks', 'writing/'], ['About
       <a class="wordmark" href={url()} aria-label="Ethan Meitz home">ethan meitz<span aria-hidden="true">.</span></a>
       <nav aria-label="Main navigation">
         {nav.map(([label, path]) => <a href={url(path)} aria-current={Astro.url.pathname.startsWith(url(path)) ? 'page' : undefined}>{label}</a>)}
-        <a class="nav-contact" href={url('contact/')} aria-current={Astro.url.pathname.startsWith(url('contact/')) ? 'page' : undefined}>Let’s talk <span aria-hidden="true">↗</span></a>
+        <a class="nav-contact" href={url('contact/')} aria-current={Astro.url.pathname.startsWith(url('contact/')) ? 'page' : undefined}>Contact Me <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
     <main id="main"><slot /></main>

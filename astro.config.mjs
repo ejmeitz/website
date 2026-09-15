@@ -9,6 +9,7 @@ export default defineConfig({
   site: process.env.SITE_URL || 'https://ejmeitz.github.io',
   base: process.env.BASE_PATH || '/website',
   output: 'static',
+  prefetch: { prefetchAll: true, defaultStrategy: 'hover' },
   trailingSlash: 'always',
   integrations: [sitemap({ filter: (page) => !page.endsWith('/404/') && !excluded.has(new URL(page).pathname) })],
   devToolbar: { enabled: false },

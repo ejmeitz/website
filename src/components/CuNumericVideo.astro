@@ -1,3 +1,7 @@
+---
+import LinkArrow from './LinkArrow.astro';
+---
+
 <div class="video-player">
   <iframe
     src="https://www.youtube-nocookie.com/embed/rFJMqKIJuNc?autoplay=0"
@@ -7,4 +11,8 @@
     referrerpolicy="strict-origin-when-cross-origin"
   ></iframe>
 </div>
-<p><a href="https://www.youtube.com/watch?v=rFJMqKIJuNc">Watch on YouTube ↗</a></p>
+<p>
+  <a href="https://www.youtube.com/watch?v=rFJMqKIJuNc" target="_blank" rel="noopener noreferrer">
+    Watch on YouTube <LinkArrow />
+  </a>
+</p>

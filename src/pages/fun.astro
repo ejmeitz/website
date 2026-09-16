@@ -1,15 +1,48 @@
 ---
+import LinkArrow from '../components/LinkArrow.astro';
 import Base from '../layouts/Base.astro';
 import Lattice from '../components/Lattice.astro';
-const sketches = [{title:'Bouncing balls',id:'Ggf2mFF9o'},{title:'Tic-tac-toe with minimax',id:'6Ll3mkIKB'}];
+const sketches = [
+  { title: 'Bouncing balls', id: 'Ggf2mFF9o' },
+  { title: 'Tic-tac-toe with minimax', id: '6Ll3mkIKB' },
+];
 ---
+
 <Base title="Playground">
   <div class="wrap">
-    <header class="page-heading"><p class="eyebrow accent">Animations & games</p><h1>Playground</h1><p class="lead">Fun animations and apps inspired by my research or things I was learning in class.</p></header>
-    <div class="play-grid"><Lattice />{sketches.map((s,i)=><article class="play-card">
-      <h2>{s.title}</h2>
-      <div class="embed-holder"><iframe src={`https://editor.p5js.org/ejmeitz/embed/${s.id}`} title={s.title} sandbox="allow-scripts allow-same-origin" referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen"></iframe></div>
-      <small>{i === 1 && 'This older sketch may not work on iOS. '}<a href={`https://editor.p5js.org/ejmeitz/full/${s.id}`} target="_blank" rel="noopener noreferrer">Open separately ↗</a></small>
-    </article>)}</div>
+    <header class="page-heading">
+      <p class="eyebrow accent">Animations & games</p>
+      <h1>Playground</h1>
+      <p class="lead">
+        Fun animations and apps inspired by my research or things I was learning in class.
+      </p>
+    </header>
+    <div class="play-grid">
+      <Lattice />
+      {sketches.map((s, i) => (
+        <article class="play-card">
+          <h2>{s.title}</h2>
+          <div class="embed-holder">
+            <iframe
+              src={`https://editor.p5js.org/ejmeitz/embed/${s.id}`}
+              title={s.title}
+              sandbox="allow-scripts allow-same-origin"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="fullscreen"
+            ></iframe>
+          </div>
+          <small>
+            {i === 1 && 'This older sketch may not work on iOS. '}
+            <a
+              href={`https://editor.p5js.org/ejmeitz/full/${s.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open separately <LinkArrow />
+            </a>
+          </small>
+        </article>
+      ))}
+    </div>
   </div>
 </Base>

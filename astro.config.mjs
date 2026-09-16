@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 import { redirects } from './src/data/redirects.mjs';
 
 const base = (process.env.BASE_PATH || '/website').replace(/\/$/, '');
-const excluded = new Set(Object.keys(redirects).map(route => `${base}/${route}/`));
+const excluded = new Set(Object.keys(redirects).map((route) => `${base}/${route}/`));
 
 export default defineConfig({
   site: process.env.SITE_URL || 'https://ejmeitz.github.io',
@@ -11,6 +11,8 @@ export default defineConfig({
   output: 'static',
   prefetch: { prefetchAll: true, defaultStrategy: 'hover' },
   trailingSlash: 'always',
-  integrations: [sitemap({ filter: (page) => !page.endsWith('/404/') && !excluded.has(new URL(page).pathname) })],
+  integrations: [
+    sitemap({ filter: (page) => !page.endsWith('/404/') && !excluded.has(new URL(page).pathname) }),
+  ],
   devToolbar: { enabled: false },
 });

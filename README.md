@@ -1,6 +1,8 @@
 # Ethan Meitz’s website
 
-A static Astro + TypeScript website for research, publications, art, and personal projects. No application backend or visitor analytics. Content is built to HTML; fonts and images are hosted locally.
+A static Astro + TypeScript website for research, publications, art, and personal projects. No
+application backend or visitor analytics. Content is built to HTML; fonts and images are hosted
+locally.
 
 ## Development
 
@@ -11,7 +13,9 @@ npm ci
 npm run dev
 ```
 
-The default preview is `http://127.0.0.1:4321/website/`. `npm run verify` runs Astro checks, contact-transport tests, a production build, and link/redirect/privacy checks. `npm run preview` serves the built output.
+The default preview is `http://127.0.0.1:4321/website/`. `npm run verify` runs Astro checks,
+contact-transport tests, a production build, and link/redirect/privacy checks. `npm run preview`
+serves the built output.
 
 ## Editing content
 
@@ -19,44 +23,86 @@ The default preview is `http://127.0.0.1:4321/website/`. `npm run verify` runs A
 - `src/content/archive/`: earlier engineering and imaging projects.
 - `src/data/publications.ts`: publications and conference presentations.
 - `src/pages/`: homepage, About, Art, Playground, Writing, Contact, and Privacy.
-- `src/assets/`: artwork, photographs, and research figures. `Asset.astro` generates responsive WebP variants.
+- `src/assets/`: artwork, photographs, and research figures. `Asset.astro` generates responsive WebP
+  variants.
 - `src/styles/global.css`: shared colors, type, layout, and responsive rules.
 - `src/data/redirects.mjs`: mappings for links from the old website.
 
-The original MERN repository is untouched. No résumé, essay draft, recipient email, or private phone number is included. The public résumé download is intentionally omitted until a reviewed copy is available.
+The original MERN repository is untouched. No résumé, essay draft, recipient email, or private phone
+number is included. The public résumé download is intentionally omitted until a reviewed copy is
+available.
+
+## Formatting your edits
+
+Run `npm run format` to format the source files after editing, or `npm run format:check` to check
+formatting without changing files. Prettier and its Astro plugin are configured in
+`.prettierrc.json`, with two-space indentation and wrapped paragraphs.
+
+For text changes, open `src/pages/index.astro` (homepage), `src/pages/about.astro` (About), or
+`src/pages/writing.astro` (Writing). Edit the words inside the paragraph and heading tags, keeping
+the tags in place. Research stories live in `src/content/projects/*.md`. Save while `npm run dev` is
+running to see the update in your local preview.
 
 ## Contact form
 
-1. Create a Formspree account and form; set and verify the receiving address **in Formspree**, never in this repository.
-2. For local development, copy `.env.example` to `.env` and set `PUBLIC_FORMSPREE_ID` to the opaque form ID.
-3. For deployment, set the GitHub Actions repository variable `PUBLIC_FORMSPREE_ID` to that ID, then redeploy. The ID is public, not an API secret.
-4. Enable Formspree spam protection and allowed domains as available in your account. The form also supplies the `_gotcha` honeypot field.
-5. Test actual delivery, reply-to, validation, errors, rate limiting, and the no-JavaScript fallback after configuration. Automated tests mock transport and never send email.
+1. Create a Formspree account and form; set and verify the receiving address **in Formspree**, never
+   in this repository.
+2. For local development, copy `.env.example` to `.env` and set `PUBLIC_FORMSPREE_ID` to the opaque
+   form ID.
+3. For deployment, set the GitHub Actions repository variable `PUBLIC_FORMSPREE_ID` to that ID, then
+   redeploy. The ID is public, not an API secret.
+4. Enable Formspree spam protection and allowed domains as available in your account. The form also
+   supplies the `_gotcha` honeypot field.
+5. Test actual delivery, reply-to, validation, errors, rate limiting, and the no-JavaScript fallback
+   after configuration. Automated tests mock transport and never send email.
 
-Without a valid ID, the page explicitly says the form is unavailable, disables submission, and offers LinkedIn. The free tier was verified at 50 submissions/month during implementation; verify current limits in the provider dashboard. No email address should be stored in a hidden field, public environment variable, HTML, or JavaScript.
+Without a valid ID, the page explicitly says the form is unavailable, disables submission, and
+offers LinkedIn. The free tier was verified at 50 submissions/month during implementation; verify
+current limits in the provider dashboard. No email address should be stored in a hidden field,
+public environment variable, HTML, or JavaScript.
 
 ## GitHub Pages and Namecheap
 
-See [the launch guide](docs/launch.md). The workflow deploys pushes to `main`, validates pull requests without deploying them, and supports manual dispatch.
+See [the launch guide](docs/launch.md). The workflow deploys pushes to `main`, validates pull
+requests without deploying them, and supports manual dispatch.
 
-Default build target: `https://ejmeitz.github.io/website/`. The GitHub repository must have **Settings → Pages → Source → GitHub Actions** enabled. Pushes to `main` validate and deploy automatically; pull requests run validation only. GitHub Free requires a public repository for Pages; a private repository requires a supporting paid plan. Deployment also requires available GitHub Actions artifact storage. Deployment does not automatically change DNS or shut down Heroku.
+Default build target: `https://ejmeitz.github.io/website/`. The GitHub repository must have
+**Settings → Pages → Source → GitHub Actions** enabled. Pushes to `main` validate and deploy
+automatically; pull requests run validation only. GitHub Free requires a public repository for
+Pages; a private repository requires a supporting paid plan. Deployment also requires available
+GitHub Actions artifact storage. Deployment does not automatically change DNS or shut down Heroku.
 
-For the later custom domain, set repository variables `SITE_URL=https://ethanmeitz.com` and `BASE_PATH=/` together. Local builds use shell environment variables for these settings; `.env` is used for the Formspree ID. Do not add a custom domain while still reviewing the project URL.
+For the later custom domain, set repository variables `SITE_URL=https://ethanmeitz.com` and
+`BASE_PATH=/` together. Local builds use shell environment variables for these settings; `.env` is
+used for the Formspree ID. Do not add a custom domain while still reviewing the project URL.
 
 ## Pending content
 
 - Public résumé, after polishing and removing private contact details.
-- cuNumeric benchmark plots with hardware, scaling mode, problem sizes, versions, and measurement methodology.
-- Published CSGF essay and podcast links. Current titles on the site are descriptive teaser headings, not asserted publication titles.
+- cuNumeric benchmark plots with hardware, scaling mode, problem sizes, versions, and measurement
+  methodology.
+- Published CSGF essay and podcast links. Current titles on the site are descriptive teaser
+  headings, not asserted publication titles.
 - New artwork and build photos.
 - Results and public materials for the protein and ML force-constant projects.
 
-Keep the thermodynamics timing claim attached to quantum LJ neon and its **estimated TI-PIMD comparator**. Classical benchmark costs are comparable. Do not expand model-system results into universal accuracy claims or imply completed protein-prediction results.
+Keep the thermodynamics timing claim attached to quantum LJ neon and its **estimated TI-PIMD
+comparator**. Classical benchmark costs are comparable. Do not expand model-system results into
+universal accuracy claims or imply completed protein-prediction results.
 
 ## Asset provenance
 
-Artwork, photographs, historical plots, and videos were supplied in the owner’s original website repository. `thermodynamics-figure.png` reproduces Figure 1 and its caption from the supplied 2026 preprint *Quantum Anharmonic Phonon Thermodynamics from the Free Energy Cumulant Expansion*, DOI `10.21203/rs.3.rs-10541555/v1`, licensed CC BY 4.0. It is cropped from the PDF page with no change to the data. Research-card diagrams are schematic, not simulation output. Fonts are bundled via Fontsource with their package licenses. p5.js sketches remain externally hosted and load only on request.
+Artwork, photographs, historical plots, and videos were supplied in the owner’s original website
+repository. `thermodynamics-figure.png` reproduces Figure 1 and its caption from the supplied 2026
+preprint _Quantum Anharmonic Phonon Thermodynamics from the Free Energy Cumulant Expansion_, DOI
+`10.21203/rs.3.rs-10541555/v1`, licensed CC BY 4.0. It is cropped from the PDF page with no change
+to the data. Research-card diagrams are schematic, not simulation output. Fonts are bundled via
+Fontsource with their package licenses. p5.js sketches remain externally hosted and load only on
+request.
 
-The “Good vibrations” cover illustration is by Ethan Meitz, sourced from the [published DEIXIS essay](https://deixismagazine.org/2026/09/good-vibrations/) (September 2026).
+The “Good vibrations” cover illustration is by Ethan Meitz, sourced from the
+[published DEIXIS essay](https://deixismagazine.org/2026/09/good-vibrations/) (September 2026).
 
-The PPI illustration was supplied by Ethan from the [PINDER paper, version 4](https://www.biorxiv.org/content/10.1101/2024.07.17.603980v4.full.pdf). It is credited alongside the image and is not a result from this project.
+The PPI illustration was supplied by Ethan from the
+[PINDER paper, version 4](https://www.biorxiv.org/content/10.1101/2024.07.17.603980v4.full.pdf). It
+is credited alongside the image and is not a result from this project.

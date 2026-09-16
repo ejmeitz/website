@@ -9,7 +9,9 @@
     "preview": "astro preview --host 127.0.0.1",
     "check": "astro check",
     "test": "node --test tests/*.test.mjs",
-    "verify": "npm run check && npm run test && npm run build && node scripts/verify-build.mjs"
+    "verify": "npm run check && npm run test && npm run build && node scripts/verify-build.mjs",
+    "format": "prettier --write \"src/**/*.{astro,ts,mjs,css,md}\" astro.config.mjs README.md package.json",
+    "format:check": "prettier --check \"src/**/*.{astro,ts,mjs,css,md}\" astro.config.mjs README.md package.json"
   },
   "engines": {
     "node": ">=22.12.0"
@@ -22,6 +24,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "prettier": "^3.9.7",
+    "prettier-plugin-astro": "^1.0.0",
     "typescript": "^5.9.2"
   }
 }

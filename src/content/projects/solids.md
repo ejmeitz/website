@@ -27,7 +27,7 @@ those vibrations as independent harmonic oscillators. Real materials are more co
 vibrations interact, and quantum effects matter at low temperatures.
 
 My PhD research develops practical ways to capture this complexity. I combine statistical mechanics,
-lattice dynamics, and high-performance computing to make accurate material-property calculations
+lattice dynamics, and high-performance computing to make accurate material property calculations
 faster and easier to use.
 
 ## Free-energy cumulant expansion
@@ -72,21 +72,17 @@ extend the work.
 
 My 2025 Physical Review B paper, **Phonon mode resolved anharmonic heat capacity of solids**,
 develops a framework for resolving anharmonic heat capacity into individual vibrational modes. It
-explores how mode self-interactions and interactions between modes change the harmonic picture.
+explores how mode self-interactions and interactions between modes change the harmonic picture to dictate the temeprature dependence of heat capacity.
 
-For the tested temperatures, the instantaneous-normal-mode approach predicts the total
-potential-energy heat capacity of Lennard–Jones argon within 1.1%; the temperature-dependent
+For the tested temperatures, the instantaneous normal mode approach predicts the total
+potential-energy heat capacity of Lennard–Jones argon within 1.1%. The temperature-dependent
 effective-potential approach performs best for Stillinger–Weber silicon, within 0.7%. Understanding
 these mode-level contributions can improve the heat-capacity inputs used in high-temperature
 thermal-transport calculations.
 
 ## In progress: learning the phonons of disordered solids
 
-I am developing an ML framework that predicts **second-order interatomic force constants**: the
-quantities that describe the local stiffness of the atomic energy landscape and determine phonon
-modes.
+I am developing an ML framework that predicts **second-order interatomic force constants**. With the force constants one can derive the phonons (vibrational modes) of a crystal which can be used to compute thermodynamic properties and thermal conductivity.
 
 The goal is to capture force constants in alloys and disordered systems that challenge conventional
-approaches. This work connects my grounding in lattice dynamics with machine learning for materials.
-The framework is in development; results and implementation details will be shared as the work
-progresses.
+approaches due to the size of their supercell. This work connects my prior work in lattice dynamics with machine learning for materials. The framework is in development, but shows great agreement for silcion and AlGaN. More results and implementation details will be shared as the work progresses.

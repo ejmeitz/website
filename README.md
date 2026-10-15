@@ -79,8 +79,8 @@ used for the Formspree ID. Do not add a custom domain while still reviewing the 
 ## Pending content
 
 - Public résumé, after polishing and removing private contact details.
-- cuNumeric benchmark plots with hardware, scaling mode, problem sizes, versions, and measurement
-  methodology.
+- Public cuNumeric manuscript link when available; selected plots from the manuscript under review
+  are included on the project page.
 - Published CSGF essay and podcast links. Current titles on the site are descriptive teaser
   headings, not asserted publication titles.
 - New artwork and build photos.
@@ -91,6 +91,16 @@ comparator**. Classical benchmark costs are comparable. Do not expand model-syst
 universal accuracy claims or imply completed protein-prediction results.
 
 ## Asset provenance
+
+The cuNumeric.jl header uses the horizontal logo supplied from the
+[project documentation](https://julialegate.github.io/cuNumeric.jl/stable/assets/logo-horizontal.DRi_3-Tz.png).
+The `cunumeric-solvers.svg`, `cunumeric-benchmarks.svg`, and `cunumeric-gray-scott-comparison.svg`
+assets are original vector plots from the
+[cuNumeric.jl benchmark documentation](https://julialegate.github.io/cuNumeric.jl/stable/benchmarks/results),
+using the public cuNumeric.jl and cuPyNumeric names. They replace the corresponding manuscript
+crops. The source assets are `composability.jv7_v168.svg`, `grid_time.Dof7BEEL.svg`, and
+`fusion_time.Cmb9r-lZ.svg`, respectively, under the documentation’s `stable/assets/` directory. The
+manuscript PDF is not included in the website.
 
 Artwork, photographs, historical plots, and videos were supplied in the owner’s original website
 repository. `thermodynamics-figure.png` reproduces Figure 1 and its caption from the supplied 2026

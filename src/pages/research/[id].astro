@@ -17,21 +17,37 @@ const { Content } = await render(project);
 
 <Base title={project.data.title} description={project.data.description}>
   <div class="wrap">
-    <header class="page-heading">
+    <header class:list={['page-heading', { 'cunumeric-heading': project.id === 'cunumeric' }]}>
       <a class="eyebrow accent" href={url('research/')}>
         ← Research
       </a>
-      <h1>{project.data.title}</h1>
       {project.id === 'cunumeric' && (
         <Asset
-          name="cunumeric-logo.png"
-          alt="cuNumeric.jl logo: three connected servers with green, red, and purple outlines"
+          name="cunumeric-logo-horizontal.png"
+          alt="cuNumeric.jl horizontal logo: three connected CPU and GPU systems in green, red, and purple"
           class="cunumeric-page-logo"
+          widths={[720, 1440]}
+          sizes="(max-width: 800px) 90vw, 720px"
           eager
         />
       )}
+      <h1 class:list={{ 'sr-only': project.id === 'cunumeric' }}>{project.data.title}</h1>
       <p class="lead">{project.data.subtitle}</p>
-      <span class="status">{project.data.status}</span>
+      {project.id === 'cunumeric' ? (
+        <div class="cunumeric-header-actions">
+          <span class="status">{project.data.status}</span>
+          <a
+            class="button"
+            href="https://github.com/JuliaLegate/cuNumeric.jl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View on GitHub <LinkArrow />
+          </a>
+        </div>
+      ) : (
+        <span class="status">{project.data.status}</span>
+      )}
     </header>
     {project.id === 'solids' && (
       <div class="metric-strip">
@@ -112,21 +128,14 @@ const { Content } = await render(project);
         <Content />
         {project.id === 'cunumeric' && (
           <section id="video">
-            <h2>JuliaCon 2025</h2>
+            <h2>JuliaCon 2025: an early version</h2>
             <p>
-              I served as a local liaison for JuliaCon 2025 in Pittsburgh and presented my talk with David Krasowska, “cuNumeric.jl: Automating Distributed Numerical Computing.”
+              I served as a local liaison for JuliaCon 2025 in Pittsburgh and presented my talk with
+              David Krasowska, “cuNumeric.jl: Automating Distributed Numerical Computing.” This talk
+              presents a very early version of the project and predates the work and benchmark
+              results in our manuscript under review.
             </p>
             <CuNumericVideo />
-          </section>
-        )}
-        {project.id === 'cunumeric' && (
-          <section class="placeholder">
-            <p class="eyebrow">Benchmarks · Coming soon</p>
-            <h3>Gray–Scott reaction–diffusion</h3>
-            <p>
-              Space reserved for scaling and runtime plots, with hardware, problem sizes, and
-              comparison methods. Benchmark figures will be added when ready.
-            </p>
           </section>
         )}
       </article>

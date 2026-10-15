@@ -16,7 +16,7 @@ links: []
 ## Intrinsically disordered proteins
 
 Intrinsically disordered proteins and regions are flexible and do not adopt a single stable
-structure. Their changing conformations and binding interactions make them scientifically
+structure. Their changing conformations and numerous binding interactions make them scientifically
 interesting yet their weak interaction strength and dynamic nature make them difficult to model.
 
 My research asks whether we can predict binding partners for disordered proteins to support support drug design for these targets. A central motivation is to model interactions while
@@ -24,7 +24,7 @@ explicitly considering disorder, rather than relying only on a static structural
 
 ## Bringing disorder into the model
 
-The model augments sequence inputs with properties related to disorder, including disorder
+My model augments the traditional amino acid sequence with properties related to disorder, including disorder
 propensity and hydrophobicity. It uses ESM2-derived representations and intraprotein contact
 information alongside cross-attention to model relationships between proteins.
 
@@ -50,5 +50,5 @@ progress. There are no major predictive results to report yet. Future analysis w
 performance specifically for disordered proteins and regions, alongside broader protein-interaction
 benchmarks.
 
-My visiting appointment was in 2024–2025, and the project remains ongoing. Additional results and
+My visiting appointment was in 2024–2025. Additional results and
 public materials will be added as they become available.

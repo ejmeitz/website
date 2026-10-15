@@ -1331,10 +1331,39 @@
   max-width: 100%;
   object-fit: contain;
 }
+.cunumeric-heading {
+  max-width: none;
+}
+
 .cunumeric-page-logo {
-  width: 180px;
+  display: block;
+  width: min(720px, 100%);
   height: auto;
-  margin: 24px 0;
+  margin: 24px auto;
+}
+
+.cunumeric-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.cunumeric-header-actions .status {
+  margin-top: 0;
+}
+
+.cunumeric-header-actions .button {
+  gap: 8px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+}
+
+.cunumeric-plot img {
+  width: 100%;
+  height: auto;
+  background: white;
 }
 
 .ppi-card-image {
